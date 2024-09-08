@@ -1,0 +1,17 @@
+{% extends 'admin/master.html' %} 
+{% block body %}
+    {% if all_users %}
+    <h3>Number of users registered in application: {{all_users|length}}</h3>
+        {%for user in all_users%}
+            {% if user.posts %}
+            <h4>User {{user.username}} has the following posts:</h4>
+            {%for post in user.posts%}
+                <h5>Title: {{post.title}}</h5>
+                <h5>Description: {{post.body}}</h5>
+            {% endfor %} 
+            {%else%}
+            <h4>User {{user.username}} did not post any information<h4>
+            {% endif %}
+        {% endfor %} 
+    {% endif %}
+{% endblock body%}
